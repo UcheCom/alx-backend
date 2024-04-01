@@ -35,8 +35,8 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """This returns the appropriate page of the
-	dataset (i.e. the correct list of rows).
-	"""
+           dataset (i.e. the correct list of rows).
+        """
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
 
