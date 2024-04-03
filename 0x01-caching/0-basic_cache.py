@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """0. Basic dictionary"""
 
 BasicCaching = __import__('basic_caching').BasicCaching
@@ -15,7 +15,7 @@ class BasicCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-        """ Return the value linked to key in the cache"""
+        """ Returns the value linked to key in the cache"""
         if not key or key not in self.cache_data.keys():
             return None
         return self.cache_data[key]
