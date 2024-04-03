@@ -14,8 +14,6 @@ class BasicCache(BaseCaching):
         if key and item:
             self.cache_data[key] = item
 
-
-
     def get(self, key):
         """ Return the value linked to key in the cache"""
         if not key or key not in self.cache_data.keys():
