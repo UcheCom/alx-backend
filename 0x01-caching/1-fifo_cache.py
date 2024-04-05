@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""FIFO caching"""
+"""FIFO Caching System"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """FIFO Caching"""
+    """FIFO Caching that inherits the parent class"""
 
     def put(self, key, item):
         """ Add a new item to the cache"""
