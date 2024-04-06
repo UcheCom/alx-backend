@@ -25,16 +25,16 @@ class LFUCache(BaseCaching):
             else:
                 self.__frequency[key] += 1
 
-            self.cache_data[key] item
+            self.cache_data[key] = item
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 fq_v = [v for k, v in self.__frequency.items() if k != key]
                 min_freq = min(fq_v)
-                min_ks = [key for key, freq in self.__frequency.items()
+                min_ks = [k for k, freq in self.__frequency.items()
                           if freq == min_freq]
                 min_k = min(
                     min_ks,
-                    key=lambda key: self.__timestamps[key],
+                    key=lambda k: self.__timestamps[k],
                 )
                 del self.cache_data[min_k]
                 del self.__frequency[min_k]
