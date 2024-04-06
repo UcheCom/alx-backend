@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""FIFO Caching System"""
+"""LRU Caching System"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
@@ -30,7 +30,7 @@ class LRUCache(BaseCaching):
                 print("DISCARD: {}".format(key_lru))
 
     def get(self, key):
-        """ Get an item from the cache by key"""
+        """ This gets an item from the cache by key"""
         if not key or key not in self.cache_data.keys():
             return None
         key_lru = self.__itemsUsed.pop(self.__itemsUsed.index(key))
