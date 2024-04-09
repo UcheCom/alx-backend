@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Module is basic Flask app"""
+"""Module is basic Flask app setup"""
 from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
 @app.route('/')
-
 def index():
-    """"""
-    return render_template('index.html')
+    """Hello world"""
+    return render_template('0-index.html')
 
 
 if __name__ == '__main__':
