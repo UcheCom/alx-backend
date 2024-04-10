@@ -2,6 +2,7 @@
 """Module is Basic Flask and Babel app setup"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+from typing import Union, Dict
 
 
 class Config(object):
@@ -24,15 +25,15 @@ users = {
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """Determines the best match with supported languages"""
-    local = request.args.get('locale')
+    local = request.args.get('locale', '')
     if local in app.config['LANGUAGES']:
         return local
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-def get_user():
+def get_user() -> Union[Dict, None]:
     """This gets user dict or None"""
     login_id = request.args.get('login_as')
     if login_as:
