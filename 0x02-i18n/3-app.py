@@ -2,7 +2,6 @@
 """Module is Basic Flask and Babel app setup"""
 from flask import Flask, render_template, request
 from flask_babel import Babel
-from flask_babel import gettext as _
 
 
 class Config(object):
