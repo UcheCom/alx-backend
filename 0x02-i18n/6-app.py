@@ -31,7 +31,7 @@ def get_locale() -> str:
         return local
     if g.user:
         local = g.user['locale']
-        if local in app.config['LANGUAGES']
+        if local in app.config['LANGUAGES']:
             return local
 
     local = request.headers.get('locale', None)
