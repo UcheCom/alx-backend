@@ -26,14 +26,18 @@ users = {
 @babel.localeselector
 def get_locale() -> str:
     """Determines the best match with supported languages"""
-    local = request.args.get('locale', '')
+    local = request.args.get('locale')
     if local in app.config['LANGUAGES']:
         return local
-    if g.user and g.user['local'] in app.config['LANGUAGES']:
-        return g.user['local']
-    header_loc = request.headers.get('local', '')
-    if header_loc in app.config["LANGUAGES"]:
-        return header_loc
+    if g.user:
+        local = g.user['locale']
+        if local in app.config['LANGUAGES']
+            return local
+
+    local = request.headers.get('locale', None)
+    if local in app.config["LANGUAGES"]:
+        return local
+
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
