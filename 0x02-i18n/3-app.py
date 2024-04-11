@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-class Config(object):
+class Config:
     """Configuration"""
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
@@ -15,18 +15,17 @@ app = Flask(__name__)
 app.config.from_object(Config)
 app.url_map.strict_slashes = False
 babel = Babel(app)
-babel.init_app(app)
 
 
 @babel.localeselector
 def get_locale() -> str:
-    """Determines the best match with supported languages"""
+    """This retrieves the locale for a web page"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def get_index() -> str:
-    """Hello world"""
+    """The home or index page"""
     return render_template('3-index.html')
 
 
