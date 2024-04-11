@@ -41,7 +41,7 @@ def get_locale() -> str:
 def get_user() -> Union[Dict, None]:
     """This gets user dict or None"""
     login_id = request.args.get('login_as')
-    if login_as:
+    if login_id:
         return users.get(int(login_id))
     return None
 
