@@ -2,7 +2,6 @@
 """Basic Flask and Babel app setup with internationalization support"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, format_datetime
-from typing import Union, Dict
 from pytz import timezone
 import pytz.exceptions
 
@@ -44,6 +43,9 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+babel = Babel(app, locale_selector=get_locale)
+
+
 @babel.timezoneselector
 def get_timezone() -> str:
     """This determines and returns the timezone"""
@@ -56,10 +58,10 @@ def get_timezone() -> str:
         return app.config['BABEL_DEFAULT_TIMEZONE']
 
 
-def get_user() -> Union[Dict, None]:
+def get_user():
     """This gets user dict or None"""
     login_id = request.args.get('login_as')
-    if login_as:
+    if login_id:
         return users.get(int(login_id))
     return None
 
