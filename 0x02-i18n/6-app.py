@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Module is Basic Flask and Babel app setup"""
 from flask import Flask, render_template, request, g
+from flask_babel import gettext as _
 from flask_babel import Babel
 from typing import Union, Dict
 
@@ -40,7 +41,7 @@ def get_locale() -> str:
 
 def get_user() -> Union[Dict, None]:
     """This gets user dict or None"""
-    login_id = request.args.get('login_as')
+    login_id = request.args.get('login_as', '')
     if login_id:
         return users.get(int(login_id))
     return None
